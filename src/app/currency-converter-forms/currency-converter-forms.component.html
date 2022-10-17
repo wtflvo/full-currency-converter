@@ -6,14 +6,14 @@
         type="number"
         class="converter-input"
         [ngModel]="selectedInfo.quantityA"
-        (ngModelChange)="changeInputA($event)"
+        (ngModelChange)="handleChange($event, 'quantityA')"
         [value]="convertSecondInputs()"
       />
       <select
         name="select-first-currency"
         class="forms select-forms"
         [ngModel]="selectedInfo.currencyAIndex"
-        (ngModelChange)="changeIndexA($event)"
+        (ngModelChange)="handleChange($event, 'currencyAIndex')"
       >
         <option value="0">{{ currencies[0].ccy }}</option>
         <option value="1">{{ currencies[1].ccy }}</option>
@@ -27,14 +27,14 @@
         type="number"
         class="converter-input"
         [ngModel]="selectedInfo.quantityB"
-        (ngModelChange)="changeInputB($event)"
+        (ngModelChange)="handleChange($event, 'quantityB')"
         [value]="convertFirstInputs()"
       />
       <select
         name="select-currency"
         class="forms select-forms"
         [ngModel]="selectedInfo.currencyBIndex"
-        (ngModelChange)="changeIndexB($event)"
+        (ngModelChange)="handleChange($event, 'currencyBIndex')"
       >
         <option [value]="0" selected>{{ currencies[0].ccy }}</option>
         <option [value]="1">{{ currencies[1].ccy }}</option>

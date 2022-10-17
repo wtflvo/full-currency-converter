@@ -9,9 +9,7 @@ import { SelectedInfoClass } from '../SelectedInfoClass';
   providers: [CurrenciesInfo],
 })
 export class CurrencyConverterFormsComponent implements OnInit {
-  constructor(
-    private currenciesInfo: CurrenciesInfo 
-  ) {}
+  constructor(private currenciesInfo: CurrenciesInfo) {}
   currencies = this.currenciesInfo.getCurrenciesValue('long');
 
   selectedInfo: SelectedInfoClass = {
@@ -49,18 +47,42 @@ export class CurrencyConverterFormsComponent implements OnInit {
   }
   convertedB = this.convertSecondInputs();
 
-  changeInputA(UpdatedValue: number): void {
-    this.selectedInfo.quantityA = UpdatedValue;
-  }
-  changeInputB(UpdatedValue: number): void {
+  handleChange(UpdatedValue: number, caseString: string): void{
+    switch(caseString){
+      case "quantityA":
+        this.selectedInfo.quantityA = UpdatedValue;
+    break;
+  case "quantityB":
     this.selectedInfo.quantityB = UpdatedValue;
-  }
-  changeIndexA(UpdatedValue: number): void {
+    break;
+  
+  case "currencyAIndex":
     this.selectedInfo.currencyAIndex = UpdatedValue;
-  }
-  changeIndexB(UpdatedValue: number): void {
-    this.selectedInfo.currencyBIndex = UpdatedValue;
-  }
+    break;
+    case "currencyBIndex":
+      this.selectedInfo.currencyBIndex = UpdatedValue;
+      break;
+
+  default:
+    
+    break;
+}
+    }
+
+  
+
+  // changeInputA(UpdatedValue: number): void {
+  //   this.selectedInfo.quantityA = UpdatedValue;
+  // }
+  // changeInputB(UpdatedValue: number): void {
+  //   this.selectedInfo.quantityB = UpdatedValue;
+  // }
+  // changeIndexA(UpdatedValue: number): void {
+  //   this.selectedInfo.currencyAIndex = UpdatedValue;
+  // }
+  // changeIndexB(UpdatedValue: number): void {
+  //   this.selectedInfo.currencyBIndex = UpdatedValue;
+  // }
 
   ngOnInit(): void {}
 }
