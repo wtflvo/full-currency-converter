@@ -1,0 +1,40 @@
+.forms-block {
+  background-color: rgb(159, 192, 225);
+  box-shadow: 5px 10px #888888;
+}
+.form-converter {
+  margin: 0 0 10% 2%;
+}
+.form-image {
+  width: 36px;
+  height: 36px;
+  margin: 16px 0 0 0;
+}
+
+.converter-header {
+  padding: 1rem 0 0 0;
+  text-align: center;
+  color: #123456;
+  font-size: 2rem;
+}
+.converter-input {
+  margin: 0.3rem 0 0 0;
+  font-size: 2rem;
+  width: 65%;
+  box-shadow: 3px 3px #888888;
+}
+
+.converter-body {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.select-forms {
+  color: #eaedf0;
+  background-color: rgb(25, 91, 156);
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  margin: 1rem 0.5rem 0 0.5rem;
+}
