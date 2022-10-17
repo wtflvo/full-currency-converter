@@ -1,0 +1,43 @@
+* {
+  font-family: "DogicaPixelRegular";
+}
+
+h1 {
+  color: #123456;
+  font-size: 2rem;
+  text-align: center;
+}
+h2,
+h3,
+h4 {
+  font-weight: lighter;
+}
+h3 {
+  font-size: 1.1rem;
+}
+body {
+  padding: 0.5rem;
+  max-width: 1000px;
+  margin: auto;
+}
+@media (min-width: 600px) {
+  body {
+    padding: 2rem;
+  }
+}
+body,
+input[number] {
+  color: rgb(202, 24, 24);
+}
+input[type="number"] {
+  box-sizing: border-box;
+
+  padding: 0 1rem 0 1rem;
+  font-size: 2.5rem;
+  border-color: rgb(25, 91, 156);
+  border-style: solid;
+}
+
+form {
+  width: 50%;
+}

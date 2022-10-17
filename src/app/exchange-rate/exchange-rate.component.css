@@ -1,0 +1,33 @@
+.app-header {
+  display: flex;
+  justify-content: center;
+}
+.exchange-rates-block {
+  background-color: rgb(90, 128, 167);
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 5px 10px #888888;
+}
+.exchange-header {
+  padding: 1rem 0 0 0;
+  text-align: center;
+}
+.exchange-header__image {
+  width: 54px;
+  height: 54px;
+
+  margin: 12px 0 24px 0;
+}
+
+.currency-values-block {
+  display: flex;
+  justify-content: space-between;
+}
+.currency-value-block_column {
+  padding: 0 25px 0 25px;
+}
+.currency-value-block_header {
+  text-align: center;
+}
