@@ -1,0 +1,46 @@
+<div class="forms-block">
+  <h2 class="converter-header">Convert currency</h2>
+  <div class="converter-body">
+    <div class="form-converter">
+      <input
+        type="number"
+        class="converter-input"
+        [ngModel]="selectedInfo.quantityA"
+        (ngModelChange)="changeInputA($event)"
+        [value]="convertSecondInputs()"
+      />
+      <select
+        name="select-first-currency"
+        class="forms select-forms"
+        [ngModel]="selectedInfo.currencyAIndex"
+        (ngModelChange)="changeIndexA($event)"
+      >
+        <option value="0">{{ currencies[0].ccy }}</option>
+        <option value="1">{{ currencies[1].ccy }}</option>
+        <option value="2">{{ currencies[2].ccy }}</option>
+        <option value="3" selected>{{ currencies[3].ccy }}</option>
+      </select>
+    </div>
+    <img class="form-image" src=".\assets\new-coins.png" />
+    <div class="form-converter">
+      <input
+        type="number"
+        class="converter-input"
+        [ngModel]="selectedInfo.quantityB"
+        (ngModelChange)="changeInputB($event)"
+        [value]="convertFirstInputs()"
+      />
+      <select
+        name="select-currency"
+        class="forms select-forms"
+        [ngModel]="selectedInfo.currencyBIndex"
+        (ngModelChange)="changeIndexB($event)"
+      >
+        <option [value]="0" selected>{{ currencies[0].ccy }}</option>
+        <option [value]="1">{{ currencies[1].ccy }}</option>
+        <option [value]="2">{{ currencies[2].ccy }}</option>
+        <option [value]="3">{{ currencies[3].ccy }}</option>
+      </select>
+    </div>
+  </div>
+</div>
