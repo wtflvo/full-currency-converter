@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { lastValueFrom } from 'rxjs';
 import { Currency } from '../interfaces/Currency';
 
 @Injectable({
@@ -32,8 +29,7 @@ export class CurrenciesInfo {
           currenciesValue[2].sale *= currenciesValue[0].sale;
         }
         console.log(response, 'response');
-      })
-      
+      });
 
     return currenciesValue;
   }
