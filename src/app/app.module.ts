@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-
-import { CurrencyConverterFormsComponent } from './currency-converter-forms/currency-converter-forms.component';
-import { ExchangeRateComponent } from './exchange-rate/exchange-rate.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CurrencyConverterFormsComponent } from './components/currency-converter-forms/currency-converter-forms.component'; 
+import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component'; 
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { ExchangeRateComponent } from './exchange-rate/exchange-rate.component';
     CurrencyConverterFormsComponent,
     ExchangeRateComponent,
   ],
-  imports: [FormsModule, BrowserModule],
+  imports: [FormsModule, BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

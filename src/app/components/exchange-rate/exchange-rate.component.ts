@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrenciesInfo } from '../currencies-api.service';
+import { CurrenciesInfo } from 'src/app/services/currencies-api.service'; 
 
 @Component({
   selector: 'app-exchange-rate',
@@ -9,11 +9,6 @@ import { CurrenciesInfo } from '../currencies-api.service';
 })
 export class ExchangeRateComponent implements OnInit {
   constructor(public currenciesInfo: CurrenciesInfo) {}
-  currencies = this.currenciesInfo.getCurrenciesValue("short");
-  currenciesShort = new Array(
-    this.currencies[0],
-    this.currencies[1],
-    this.currencies[2]
-  );
+  currencies:Array<any> = this.currenciesInfo.getCurrenciesValue("short");
   ngOnInit(): void {}
 }

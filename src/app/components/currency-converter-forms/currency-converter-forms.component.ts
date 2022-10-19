@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrenciesInfo } from '../currencies-api.service';
-import { SelectedInfoClass } from '../SelectedInfoClass';
+
+import { SelectedInfoClass } from 'src/app/interfaces/SelectedInfoClass';
+import { CurrenciesInfo } from 'src/app/services/currencies-api.service';
 
 @Component({
   selector: 'app-currency-converter-forms',
@@ -10,7 +11,7 @@ import { SelectedInfoClass } from '../SelectedInfoClass';
 })
 export class CurrencyConverterFormsComponent implements OnInit {
   constructor(private currenciesInfo: CurrenciesInfo) {}
-  currencies = this.currenciesInfo.getCurrenciesValue('long');
+  currencies: Array<any> = this.currenciesInfo.getCurrenciesValue('long');
 
   selectedInfo: SelectedInfoClass = {
     currencyAIndex: 3,
@@ -23,9 +24,9 @@ export class CurrencyConverterFormsComponent implements OnInit {
     quantity: number = this.selectedInfo.quantityA,
     primaryCurrencyIndex: number = this.selectedInfo.currencyAIndex,
     secondaryCurrencyIndex: number = this.selectedInfo.currencyBIndex
-  ) {
+  ): number | undefined {
     if (quantity) {
-      return Number(
+      return +Number(
         (quantity * this.currencies[primaryCurrencyIndex].buy) /
           this.currencies[secondaryCurrencyIndex].buy
       ).toFixed(2);
@@ -37,52 +38,36 @@ export class CurrencyConverterFormsComponent implements OnInit {
     quantity: number = this.selectedInfo.quantityB,
     primaryCurrencyIndex: number = this.selectedInfo.currencyBIndex,
     secondaryCurrencyIndex: number = this.selectedInfo.currencyAIndex
-  ) {
+  ): number | void {
     if (quantity) {
-      return Number(
+      return +Number(
         (quantity * this.currencies[primaryCurrencyIndex].buy) /
           this.currencies[secondaryCurrencyIndex].buy
       ).toFixed(2);
-    } else return;
+    } 
   }
   convertedB = this.convertSecondInputs();
 
-  handleChange(UpdatedValue: number, caseString: string): void{
-    switch(caseString){
-      case "quantityA":
+  handleChange(UpdatedValue: number, caseString: string): void {
+    switch (caseString) {
+      case 'quantityA':
         this.selectedInfo.quantityA = UpdatedValue;
-    break;
-  case "quantityB":
-    this.selectedInfo.quantityB = UpdatedValue;
-    break;
-  
-  case "currencyAIndex":
-    this.selectedInfo.currencyAIndex = UpdatedValue;
-    break;
-    case "currencyBIndex":
-      this.selectedInfo.currencyBIndex = UpdatedValue;
-      break;
+        break;
+      case 'quantityB':
+        this.selectedInfo.quantityB = UpdatedValue;
+        break;
 
-  default:
-    
-    break;
-}
+      case 'currencyAIndex':
+        this.selectedInfo.currencyAIndex = UpdatedValue;
+        break;
+      case 'currencyBIndex':
+        this.selectedInfo.currencyBIndex = UpdatedValue;
+        break;
+
+      default:
+        break;
     }
-
-  
-
-  // changeInputA(UpdatedValue: number): void {
-  //   this.selectedInfo.quantityA = UpdatedValue;
-  // }
-  // changeInputB(UpdatedValue: number): void {
-  //   this.selectedInfo.quantityB = UpdatedValue;
-  // }
-  // changeIndexA(UpdatedValue: number): void {
-  //   this.selectedInfo.currencyAIndex = UpdatedValue;
-  // }
-  // changeIndexB(UpdatedValue: number): void {
-  //   this.selectedInfo.currencyBIndex = UpdatedValue;
-  // }
+  }
 
   ngOnInit(): void {}
 }
