@@ -11,7 +11,8 @@ import { CurrenciesInfo } from 'src/app/services/currencies-api.service';
 })
 export class CurrencyConverterFormsComponent implements OnInit {
   constructor(private currenciesInfo: CurrenciesInfo) {}
-  currencies: Array<any> = this.currenciesInfo.getCurrenciesValue('long');
+
+  currencies: Array<any> = this.currenciesInfo.currenciesValue;
 
   selectedInfo: SelectedInfoClass = {
     currencyAIndex: 3,
@@ -20,33 +21,20 @@ export class CurrencyConverterFormsComponent implements OnInit {
     quantityB: 0,
   };
 
-  public convertFirstInputs(
-    quantity: number = this.selectedInfo.quantityA,
-    primaryCurrencyIndex: number = this.selectedInfo.currencyAIndex,
-    secondaryCurrencyIndex: number = this.selectedInfo.currencyBIndex
-  ): number | undefined {
-    if (quantity) {
+  public convertCurrency(order: number): number {
+    if (order === 1) {
       return +Number(
-        (quantity * this.currencies[primaryCurrencyIndex].buy) /
-          this.currencies[secondaryCurrencyIndex].buy
+        (this.selectedInfo.quantityA *
+          this.currencies[this.selectedInfo.currencyAIndex].buy) /
+          this.currencies[this.selectedInfo.currencyBIndex].buy
       ).toFixed(2);
-    } else return;
+    }
+    return +Number(
+      (this.selectedInfo.quantityB *
+        this.currencies[this.selectedInfo.currencyBIndex].buy) /
+        this.currencies[this.selectedInfo.currencyAIndex].buy
+    ).toFixed(2);
   }
-  convertedA = this.convertFirstInputs();
-
-  public convertSecondInputs(
-    quantity: number = this.selectedInfo.quantityB,
-    primaryCurrencyIndex: number = this.selectedInfo.currencyBIndex,
-    secondaryCurrencyIndex: number = this.selectedInfo.currencyAIndex
-  ): number | void {
-    if (quantity) {
-      return +Number(
-        (quantity * this.currencies[primaryCurrencyIndex].buy) /
-          this.currencies[secondaryCurrencyIndex].buy
-      ).toFixed(2);
-    } 
-  }
-  convertedB = this.convertSecondInputs();
 
   handleChange(UpdatedValue: number, caseString: string): void {
     switch (caseString) {
@@ -69,5 +57,7 @@ export class CurrencyConverterFormsComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currenciesInfo.getCurrenciesValue('long');
+  }
 }

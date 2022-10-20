@@ -7,7 +7,7 @@
         class="converter-input"
         [ngModel]="selectedInfo.quantityA"
         (ngModelChange)="handleChange($event, 'quantityA')"
-        value="{{convertSecondInputs()}}"
+        value="{{ convertCurrency(2) }}"
       />
       <select
         name="select-first-currency"
@@ -28,7 +28,7 @@
         class="converter-input"
         [ngModel]="selectedInfo.quantityB"
         (ngModelChange)="handleChange($event, 'quantityB')"
-        value="{{convertFirstInputs()}}"
+        value="{{ convertCurrency(1) }}"
       />
       <select
         name="select-currency"

@@ -9,6 +9,10 @@ import { CurrenciesInfo } from 'src/app/services/currencies-api.service';
 })
 export class ExchangeRateComponent implements OnInit {
   constructor(public currenciesInfo: CurrenciesInfo) {}
-  currencies:Array<any> = this.currenciesInfo.getCurrenciesValue("short");
-  ngOnInit(): void {}
+  
+  currencies:Array<any> = this.currenciesInfo.currenciesValue;
+  ngOnInit(): void {
+    this.currenciesInfo.getCurrenciesValue("short" )
+  }
+    
 }
